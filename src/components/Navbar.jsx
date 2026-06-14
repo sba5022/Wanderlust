@@ -8,8 +8,8 @@ const Navbar = () => {
         <nav className='w-full flex items-center justify-between p-4 bg-white shadow-md'>
           <ul className='flex items-center gap-4'>
             <li><Link href="/">Home</Link></li>
-            <li><Link href='/add-destination'>Destinations</Link></li>
-            <li><Link href='/my bookings'>My Bookings</Link></li>
+            <li><Link href='/desti'>Destinations</Link></li>
+            <li><Link href='/add-destination'>My Bookings</Link></li>
             <li><Link href='/admin'>Admin</Link></li>
             
           </ul>

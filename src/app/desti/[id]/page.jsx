@@ -1,5 +1,6 @@
 
 
+import BookingCard from '@/components/BookingCard';
 import DeleteDestination from '@/components/DeleteDestination';
 import EditModal from '@/components/EditModal';
 import Image from 'next/image';
@@ -40,7 +41,7 @@ const DestinationDetailsPage = async ({ params }) => {
                 alt={destinationName}
 
             />
-             <div className='flex items-center gap-2'>
+             <div className='flex items-center justify-between gap-10'>
                 <div >
                     <div className='flex items-center gap-2'>
 
@@ -50,7 +51,7 @@ const DestinationDetailsPage = async ({ params }) => {
             <div>
                 <h2 className='text-5xl italic font-light'>{destinationName}</h2>
             </div>
-            <div className='flex items-center gap-2'>
+            <div className='flex items-center  gap-2'>
                 <SlCalender /><span>{duration}</span>
             </div>
             <h1 className='text-2xl font-bold'>Overview</h1>
@@ -58,7 +59,7 @@ const DestinationDetailsPage = async ({ params }) => {
                 </div>
                 <div>
                     
-                    <h3>${price}</h3>
+                    <BookingCard destination={destination}/>
                 </div>
             </div>
         </div>

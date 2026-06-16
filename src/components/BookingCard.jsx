@@ -9,7 +9,7 @@ const BookingCard = ({destination}) => {
            
         } = authClient.useSession() 
         const user = session?.user;
-     const [departureDate, setDepartureDate] = useState()
+     const [departureDate, setDepartureDate] = useState(null)
      console.log(departureDate)
   const {price ,_id, destinationName,imageUrl,   country} =destination;
   const handleBooking = async()=> {
@@ -24,7 +24,15 @@ const BookingCard = ({destination}) => {
         country,
         departureDate: new Date(departureDate)
     }
-    console.log(bookingData)
+    const res = await fetch('http://localhost:5001/bookings',{
+        method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(bookingData)
+    })
+    const data= await res.json()
+    console.log(data)
   }
     return (
         <Card>

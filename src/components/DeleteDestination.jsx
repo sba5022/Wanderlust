@@ -1,5 +1,6 @@
 'use client'
-import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from "next/navigation";
+
 import React from 'react';
 
 const DeleteDestination = ({destination}) => {
@@ -19,7 +20,7 @@ const DeleteDestination = ({destination}) => {
             }
         )
 const data = await res.json()
-redirect('/desti')
+redirect("/desti")
         console.log(data,"delete clicked");
 
         // call API here later

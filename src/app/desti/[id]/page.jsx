@@ -3,6 +3,8 @@
 import BookingCard from '@/components/BookingCard';
 import DeleteDestination from '@/components/DeleteDestination';
 import EditModal from '@/components/EditModal';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -13,7 +15,17 @@ import { SlCalender } from 'react-icons/sl';
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
-    const res = await fetch(`http://localhost:5001/destinations/${id}`);
+    const token = await auth.api.getToken({
+        headers: await headers()
+    });
+    console.log(token)
+    const res = await fetch(`http://localhost:5001/destinations/${id}`,
+       {
+         headers: {
+authorization :"logged in"
+        }
+       }
+    );
     const destination = await res.json();
     console.log(destination);
     console.log(id);

@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { jwt } from "better-auth/plugins";
 
 const client = new MongoClient("mongodb+srv://betterauth:I0gpWap9D4TAVdl3@cluster0.xhvglyr.mongodb.net/?appName=Cluster0");
 const db = client.db("wanderlust");
@@ -19,4 +20,14 @@ export const auth = betterAuth({
             clientSecret: process.env.GOOGLE_SECRET, 
         }, 
     },
+    session:{
+        cookieCache:{
+            enabled: true,
+            strategy:"jwt",
+            maxAge: 1000 
+        }
+    },
+    plugins: [
+        jwt()
+    ]
 });
